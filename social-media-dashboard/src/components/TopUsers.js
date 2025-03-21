@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { useUsers, useFetchAllUsersPosts } from '../hooks/useDataFetching';
+import { useUsers, useFetchAllUsersPosts } from '../hooks/UseDataFetching';
 import LoadingSpinner from './LoadingSpinner';
 import UserCard from './UserCard';
 

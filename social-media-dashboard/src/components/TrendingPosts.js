@@ -1,6 +1,6 @@
 // components/TrendingPosts.js
 import React, { useState, useEffect, useMemo } from 'react';
-import { useUsers, useFetchAllUsersPosts, useFetchCommentsForPosts } from '../hooks/useDataFetching';
+import { useUsers, useFetchAllUsersPosts, useFetchCommentsForPosts } from '../hooks/UseDataFetching.js';
 import LoadingSpinner from './LoadingSpinner';
 import PostCard from './PostCard.js';
 

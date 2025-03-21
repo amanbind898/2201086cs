@@ -1,4 +1,4 @@
-// components/TrendingPosts.js
+
 import React, { useState, useEffect, useMemo } from 'react';
 import { useUsers, useFetchAllUsersPosts, useFetchCommentsForPosts } from '../hooks/UseDataFetching.js';
 import LoadingSpinner from './LoadingSpinner';
@@ -22,13 +22,11 @@ function TrendingPosts() {
   const trendingPosts = useMemo(() => {
     if (!postsWithComments || postsWithComments.length === 0) return [];
     
-    // Find the maximum comment count
     const maxCommentCount = Math.max(...postsWithComments.map(post => post.commentCount));
     
-    // Return all posts that have this maximum comment count
     return postsWithComments
       .filter(post => post.commentCount === maxCommentCount)
-      .sort((a, b) => b.id - a.id); // Sort by newest post first (assuming higher ID means newer)
+      .sort((a, b) => b.id - a.id);
   }, [postsWithComments]);
   
   const isLoading = loadingUsers || loadingPosts || loadingComments;

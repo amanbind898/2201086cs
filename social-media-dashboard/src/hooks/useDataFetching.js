@@ -13,7 +13,6 @@ const cache = {
   },
 };
 
-// Cache duration in milliseconds (5 minutes)
 const CACHE_DURATION = 5 * 60 * 1000;
 
 export const useUsers = () => {
@@ -26,7 +25,6 @@ export const useUsers = () => {
       try {
         setLoading(true);
         
-        // Check if cache is valid
         const now = Date.now();
         if (cache.users && cache.lastFetched.users && (now - cache.lastFetched.users < CACHE_DURATION)) {
           setUsers(cache.users);
@@ -66,7 +64,7 @@ export const useUserPosts = (userId = null, refreshInterval = null) => {
         (now - cache.lastFetched.userPosts[uid] < CACHE_DURATION)
       ) {
         setPosts(oldPosts => {
-          // Compare with existing posts to avoid unnecessary re-renders
+      
           if (JSON.stringify(oldPosts) !== JSON.stringify(cache.userPosts[uid])) {
             return cache.userPosts[uid];
           }
@@ -89,7 +87,7 @@ export const useUserPosts = (userId = null, refreshInterval = null) => {
     if (userId) {
       fetchUserPosts(userId);
       
-      // Set up polling for real-time updates if refreshInterval is provided
+      
       if (refreshInterval) {
         intervalRef.current = setInterval(() => {
           fetchUserPosts(userId);
@@ -145,7 +143,7 @@ export const usePostComments = (postId = null) => {
   return { comments, loading, error };
 };
 
-// Utility function to fetch all users' posts
+
 export const useFetchAllUsersPosts = (users) => {
   const [allPosts, setAllPosts] = useState([]);
   const [userPostCounts, setUserPostCounts] = useState({});

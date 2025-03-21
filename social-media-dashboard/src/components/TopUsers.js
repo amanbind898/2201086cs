@@ -10,14 +10,12 @@ function TopUsers() {
   const topUsers = useMemo(() => {
     if (!users || !userPostCounts) return [];
     
-    // Convert to array of objects for easier sorting
     const userArray = Object.entries(users.users).map(([id, name]) => ({
       id,
       name,
       postCount: userPostCounts[id] || 0
     }));
     
-    // Sort by post count (descending) and take top 5
     return userArray
       .sort((a, b) => b.postCount - a.postCount)
       .slice(0, 5);
@@ -48,7 +46,7 @@ function TopUsers() {
               <UserCard 
                 user={user} 
                 rank={index + 1} 
-                avatarIndex={Number(user.id) % 10} // For consistent but varied avatars
+                avatarIndex={Number(user.id) % 10} 
               />
             </div>
           ))}
